@@ -4,7 +4,7 @@
 
 
 @section('content')
-<div class="container col-10">
+<div class="container-fluid">
     <div class=" my-4">
         <h3 class="text-dark mb-0 text-center">Dashboard</h3>
     </div>

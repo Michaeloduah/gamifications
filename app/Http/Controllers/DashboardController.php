@@ -71,9 +71,17 @@ class DashboardController extends Controller
         $questions = Question::where('course_id',$course->id)->whereNotIn('id',$exempted_questions)->with('options')->get();
 
         if(count($questions) < 1){
-            // redirect to a completed screen
-            // dd($questions);
-            return redirect()->intended('home/congrats/'.$course->id);
+            $points = 0;
+            $coins = 0;
+           foreach ($course->questions as $key => $question) {
+                if($question->answer->status){
+                    $points += 5;
+                    $coins += 0.5;
+                }
+           }
+           $user->increment('points', $points);
+           $user->increment('coins', $coins);
+            return redirect()->to('home/congrats/'.$course->id);
         }
         $question = $questions->first();
 
@@ -99,9 +107,7 @@ class DashboardController extends Controller
 
         $course = Course::findOrFail($id);
         $course->load(['questions' => function($query) use ($user){
-            return $query->with(['options','answer' => function($query) use ($user){
-                $query->where('user_id', $user->id)->where('course_id', )->first();
-            }]);
+            return $query->with('options');
         }]);
 
         return view('dashboard.home.test.result',['course' => $course]);
@@ -109,14 +115,14 @@ class DashboardController extends Controller
 
     public function submitTest(Request $request, $id)
     {
+        // dd($request->all());
         $request->validate([
-            'question_id' => 'required',
             'option_id' => 'required',
-            'status' => 'required',
-            'option' => 'required'
+            'question_id' => 'required',
         ]);
 
-        // dd($request->all());
+        $option = Option::where('question_id', $request->input('question_id'))->where('id', $request->input('option_id'))->firstOrFail();
+        // dd($option);
 
         DB::beginTransaction();
 
@@ -124,8 +130,8 @@ class DashboardController extends Controller
             'user_id' => auth()->user()->id,
             'question_id' => $request->input('question_id'),
             'option_id' => $request->input('option_id'),
-            'status' => $request->input('status'),
-            'option' => $request->input('option')
+            'status' => $option->status,
+            'answer' => ''
         ]);
 
         DB::commit();

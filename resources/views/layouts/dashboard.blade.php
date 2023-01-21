@@ -26,7 +26,7 @@
                     <div class="sidebar-brand-text mx-3"><span class="text-wrap"> Welcome {{auth()->user()->username}}</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
-                @if (auth()->user()->is_admin = 1)
+                @if (auth()->user()->is_admin == 0)
                     <ul class="navbar-nav text-light" id="accordionSidebar">
                         <li class="nav-item"><a class="nav-link" href="{{route('home.dashboard')}}"><i class="fas fa-tachometer-alt"></i><span>Home</span></a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('home.profile', auth()->user()->id)}}"><i class="fas fa-user"></i><span>Profile</span></a></li>
@@ -37,7 +37,7 @@
                 @endif
                     {{-- <hr> --}}
 
-                @if (auth()->user()->is_admin = 0)
+                @if (auth()->user()->is_admin == 1)
                     <ul class="navbar-nav text-light" id="accordionSidebar">
                         <li class="nav-item"><a class="nav-link" href=""><i class="fas fa-user"></i><span>Profile</span></a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.users.index') }}"><i class="fa fa-users"></i><span>Users</span></a></li>

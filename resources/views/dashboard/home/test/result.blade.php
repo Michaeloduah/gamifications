@@ -18,19 +18,19 @@
                                 @foreach ($course->questions as $question)
                                     <strong>Question {{++$x}}: {{ $question->question}} </strong>
                                     <br>
-                                    {{$question->answer}}
                                     <div class="mt-3"></div>
                                     <br>
                                     <br>
-                                     <br>
+                                    <br>
                                     {{-- @foreach ($question->answer as $answer)
                                         {{$answer}}
-                                    @endforeach --}}
-                                    @foreach($question->options as $option)
+                                        @endforeach --}}
+                                        @foreach($question->options as $option)
+                                        {{-- {{$question->answer->option_id == $option->id && $option->status == 1 ? 'correct': 'failed'}} --}}
                                         @if ($option->status > 0)
                                         <input class="form-check-input" type="checkbox" name="answer" id="{{ $option->option }}" value="{{ $option->id }}" disabled checked>
 
-                                        <label class="form-check-label " for="{{ $option->option }}">
+                                        <label class="form-check-label text-success" for="{{ $option->option }}">
                                             {{ $option->option }}
                                             {{-- @if(!$loop->last) | @endif --}}
                                         </label><br><hr>
@@ -39,7 +39,7 @@
                                         @else
                                         <input class="form-check-input" type="checkbox" name="answer" id="{{ $option->option }}" value="{{ $option->id }}" disabled>
 
-                                        <label class="form-check-label " for="{{ $option->option }}">
+                                        <label @class(["form-check-label", 'text-danger' => $question->answer->option_id == $option->id]) for="{{ $option->option }}">
                                             {{ $option->option }}
                                         </label><br><hr>
                                         @endif
