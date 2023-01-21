@@ -20,7 +20,13 @@ use Spatie\FlareClient\Api;
 Route::post('/register', [UserController::class, 'createUser']);
 Route::post('/login', [UserController::class, 'loginUser']);
 
+Route::middleware('auth:sanctum')->group(function(){
+    Route::get('/leaderboard', [DashboardController::class, 'leaderboard']);
+    Route::get('/course', [DashboardController::class, 'course']);
+    Route::get('/question/{id}', [DashboardController::class, 'question']);
+});
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-    Route::get('/leaderboard', [DashboardController::class, 'leaderboard']);
 });
