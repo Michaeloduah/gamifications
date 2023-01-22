@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CourseController extends Controller
 {
@@ -23,6 +24,8 @@ class CourseController extends Controller
     public function create()
     {
         //
+        $user = auth()->user();
+        return view('admin.course.addcourse', ['user' => $user]);
     }
 
     /**
@@ -34,6 +37,20 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'course' => 'required',
+            'level' => 'required',
+        ]);
+
+        DB::beginTransaction();
+
+        $answer = Course::create([
+            'name' => $request->input('course'),
+            'level' => $request->input('level')
+        ]);
+
+        DB::commit();
+        return back()->with('message', 'Course Created Successfully');
     }
 
     /**

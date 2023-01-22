@@ -73,6 +73,7 @@ class DashboardController extends Controller
         if(count($questions) < 1){
             $points = 0;
             $coins = 0;
+            $progress = 0;
            foreach ($course->questions as $key => $question) {
                 if($question->answer->status){
                     $points += 5;
@@ -81,6 +82,7 @@ class DashboardController extends Controller
            }
            $user->increment('points', $points);
            $user->increment('coins', $coins);
+           $user->increment('progress', $progress);
             return redirect()->to('home/congrats/'.$course->id);
         }
         $question = $questions->first();

@@ -6,6 +6,10 @@
                 <div class="card-body">
                     <div class="p-3">
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <a href="{{ route('admin.courses.create') }}" class="btn btn-sm btn-outline-success">
+                                <i class="fa fa-plus"></i>
+                                Add Course
+                            </a>
                             <table class="table my-0" id="dataTable">
                                 <thead>
                                     <tr>

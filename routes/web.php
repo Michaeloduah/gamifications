@@ -80,6 +80,8 @@ Route::middleware('auth')->group(function () {
 
         Route::name('courses.')->prefix('courses')->group(function () {
             Route::get('', [CourseController::class, 'index'])->name('index');
+            Route::get('create', [CourseController::class, 'create'])->name('create');
+            Route::post('create', [CourseController::class, 'store'])->name('store');
 
             Route::prefix('questions')->name('questions.')->group(function () {
                 Route::get('addquestion/{id}', [QuestionController::class, 'addquestion'])->name('addquestion');
