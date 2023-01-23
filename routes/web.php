@@ -71,6 +71,20 @@ Route::middleware('auth')->group(function () {
         // Route::get('/editprofile/{id}', [DashboardController::class, 'editProfile'])->name('profile.edit');
         // Route::post('/editprofile/{id}', [DashboardController::class, 'saveProfile'])->name('profile.update');
 
+        Route::name('courses.')->prefix('courses')->group(function(){
+            Route::get('week1', [CourseController::class, 'week1'])->name('week1');
+            Route::get('week2', [CourseController::class, 'week2'])->name('week2');
+            Route::get('week3', [CourseController::class, 'week3'])->name('week3');
+            Route::get('week4', [CourseController::class, 'week4'])->name('week4');
+            Route::get('week5', [CourseController::class, 'week5'])->name('week5');
+            Route::get('week6', [CourseController::class, 'week6'])->name('week6');
+            Route::get('week7', [CourseController::class, 'week7'])->name('week7');
+            Route::get('week8', [CourseController::class, 'week8'])->name('week8');
+            Route::get('week9', [CourseController::class, 'week9'])->name('week9');
+            Route::get('week10', [CourseController::class, 'week10'])->name('week10');
+            Route::get('week11', [CourseController::class, 'week11'])->name('week11');
+            Route::get('week12', [CourseController::class, 'week12'])->name('week12');
+        });
     });
 
     // Route::get('/message', [MessageController::class, 'index'])->name('message');

@@ -97,4 +97,78 @@ class CourseController extends Controller
     {
         //
     }
+
+    // Courses
+
+    public function week1()
+    {
+        $user = auth()->user();
+        return view('dashboard.home.courses.week1', ['user' => $user]);
+    }
+
+    public function week2()
+    {
+        $user = auth()->user();
+        return view('dashboard.home.courses.week2', ['user' => $user]);
+    }
+
+    public function week3()
+    {
+        $user = auth()->user();
+        return view('dashboard.home.courses.week3', ['user' => $user]);
+    }
+
+    public function week4()
+    {
+        $user = auth()->user();
+        return view('dashboard.home.courses.week4', ['user' => $user]);
+    }
+
+    public function week5()
+    {
+        $user = auth()->user();
+        return view('dashboard.home.courses.week5', ['user' => $user]);
+    }
+
+    public function week6()
+    {
+        $user = auth()->user();
+        return view('dashboard.home.courses.week6', ['user' => $user]);
+    }
+
+    public function week7()
+    {
+        $user = auth()->user();
+        return view('dashboard.home.courses.week7', ['user' => $user]);
+    }
+
+    public function week8()
+    {
+        $user = auth()->user();
+        return view('dashboard.home.courses.week8', ['user' => $user]);
+    }
+
+    public function week9()
+    {
+        $user = auth()->user();
+        return view('dashboard.home.courses.week9', ['user' => $user]);
+    }
+
+    public function week10()
+    {
+        $user = auth()->user();
+        return view('dashboard.home.courses.week10', ['user' => $user]);
+    }
+
+    public function week11()
+    {
+        $user = auth()->user();
+        return view('dashboard.home.courses.week11', ['user' => $user]);
+    }
+
+    public function week12()
+    {
+        $user = auth()->user();
+        return view('dashboard.home.courses.week12', ['user' => $user]);
+    }
 }
