@@ -40,7 +40,7 @@
 
                                             </td>
                                             <td>
-                                                <a class="btn btn-outline-danger btn-sm" href=""> <i class="fa fa-trash"></i></a>
+                                                <a class="btn btn-outline-danger btn-sm" href="{{route('admin.courses.questions.deletequestion', $course->id)}}"> <i class="fa fa-trash"></i></a>
                                             </td>
 
                                         </tr>

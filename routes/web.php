@@ -102,6 +102,7 @@ Route::middleware('auth')->group(function () {
                 Route::post('addquestions/{id}', [QuestionController::class, 'store'])->name('store');
                 Route::get('{id}', [QuestionController::class, 'index'])->name('index');
                 Route::get('edit/{id}', [QuestionController::class, 'edit'])->name('edit');
+                Route::get('delete/{id}', [QuestionController::class, 'destroy'])->name('deletequestion');
             });
         });
 

@@ -39,7 +39,7 @@
                                         @else
                                         <input class="form-check-input" type="checkbox" name="answer" id="{{ $option->option }}" value="{{ $option->id }}" disabled>
 
-                                        <label @class(["form-check-label", 'text-danger' => $question->answer->option_id == $option->id]) for="{{ $option->option }}">
+                                        <label @class(["form-check-label", 'text-danger' => $question->answer?->option_id == $option->id]) for="{{ $option->option }}">
                                             {{ $option->option }}
                                         </label><br><hr>
                                         @endif
@@ -71,6 +71,7 @@
                 </form>
             </div>
         </div>
+        <a class="text-decoration-none" href="{{route('home.dashboard')}}">Go to Dashboard</a>
 
     @endsection
 

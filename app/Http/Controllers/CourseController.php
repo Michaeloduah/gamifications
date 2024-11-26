@@ -50,7 +50,7 @@ class CourseController extends Controller
         ]);
 
         DB::commit();
-        return back()->with('message', 'Course Created Successfully');
+        return redirect()->intended('admin/courses')->with('message', 'Course Created Successfully');
     }
 
     /**

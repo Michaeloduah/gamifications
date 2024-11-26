@@ -25,6 +25,11 @@ return new class extends Migration
             $table->string('gender');
             $table->string('dob');
             $table->string('image');
+            $table->string('coins')->default(0);
+            $table->string('progress')->default(0);
+            $table->string('points')->default(0);
+            $table->string('totalcoins')->default(0);
+            $table->string('is_admin')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

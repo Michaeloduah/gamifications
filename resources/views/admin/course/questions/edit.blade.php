@@ -1,6 +1,7 @@
 @extends('layouts.dashboard')
 @section('content')
-{{-- <div class="container">
+<div class="container">
+    <h1 class="text-center">Edit Question</h1>
     <form class="border rounded p-5" id="form" enctype="multipart/form-data" method="POST" action="" >
         @csrf
         <div class="mb-3">
@@ -83,5 +84,5 @@
 
 
     </script>
-</div> --}}
+</div>
 @endsection

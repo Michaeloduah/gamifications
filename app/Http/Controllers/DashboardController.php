@@ -65,24 +65,28 @@ class DashboardController extends Controller
         // dd($answered);
         foreach ($answers as $answer) {
             // dd($answer->option);
-            array_push($exempted_questions, $answer->option->question->id);
+            array_push($exempted_questions, $answer?->option?->question?->id);
         }
 
-        $questions = Question::where('course_id',$course->id)->whereNotIn('id',$exempted_questions)->with('options')->get();
+        $questions = Question::where('course_id',$course?->id)->whereNotIn('id',$exempted_questions)->with('options')->get();
 
         if(count($questions) < 1){
             $points = 0;
             $coins = 0;
             $progress = 0;
-           foreach ($course->questions as $key => $question) {
-                if($question->answer->status){
+            $totalcoins = 0;
+           foreach ($course?->questions as $key => $question) {
+                if($question?->answer?->status){
                     $points += 5;
                     $coins += 0.5;
+                    $progress += 1;
+                    $totalcoins += 0.5;
                 }
            }
            $user->increment('points', $points);
            $user->increment('coins', $coins);
            $user->increment('progress', $progress);
+           $user->increment('progress', $totalcoins);
             return redirect()->to('home/congrats/'.$course->id);
         }
         $question = $questions->first();
